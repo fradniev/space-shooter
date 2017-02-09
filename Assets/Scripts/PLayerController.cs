@@ -20,11 +20,21 @@ public class PLayerController : MonoBehaviour {
         rb = GetComponent<Rigidbody>();
         target = transform.position;
         InvokeRepeating("shoting", 0.1f, attackSpeed);
+        SwipeManager.OnSwipeDetected += OnSwipeDetected;
+    }
+    void OnSwipeDetected(Swipe direction)
+    {
+        
+        Debug.Log(direction);
     }
     private void FixedUpdate()
     {
-        float moveHorizontal = Input.GetAxis("Horizontal");
+       /* float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
+        if (SwipeManager.IsSwipingLeft())
+        {
+            Debug.Log(SwipeManager.IsSwipingLeft());
+        }
         if (Input.GetButton("Fire1"))
         {
             target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -37,7 +47,7 @@ public class PLayerController : MonoBehaviour {
                 0.0f,
                 Mathf.Clamp(rb.position.z, boundary.zMin, boundary.zMax)
             );
-        rb.rotation = Quaternion.Euler(0.0f, 0.0f, rb.velocity.x*-tilt);
+        rb.rotation = Quaternion.Euler(0.0f, 0.0f, rb.velocity.x*-tilt);*/
     }
 
 
